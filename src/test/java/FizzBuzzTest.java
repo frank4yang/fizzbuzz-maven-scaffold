@@ -31,7 +31,7 @@ public class FizzBuzzTest {
         //when  alt+enter,ctrl+shift+enter(自动补全)
         String result = FizzBuzzCheck.checkFizzBuzz(i);
         //then  断言（assertThat）
-        assertThat(result).isEqualTo("fizzBuzz");
+        assertThat(result).isEqualTo("FizzBuzz");
     }
 
 }
