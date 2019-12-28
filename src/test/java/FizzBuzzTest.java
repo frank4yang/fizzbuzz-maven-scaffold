@@ -1,37 +1,34 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import static org.fest.assertions.api.Assertions.assertThat;
 
+@RunWith(Parameterized.class)
 public class FizzBuzzTest {
+    //shift+enter,ctrl+n,generate
+    private int num;
+    private String ans;
+    public FizzBuzzTest(int num, String ans) {
+        this.num = num;
+        this.ans = ans;
+    }
 
-    @Test
-    public void check_fizz_test(){
-        assertThat(FizzBuzzCheck.checkFizzBuzz(3)).isEqualTo("Fizz");
+    @Parameterized.Parameters
+    public static Collection<Object []> getParams(){
+        return Arrays.asList(new Object[][]{
+                {3,"Fizz"},
+                {5,"Buzz"},
+                {15,"FizzBuzz"},
+                {1,"1"}
+        });
+
     }
 
     @Test
-    public void check_buzz_test(){
-        assertThat(FizzBuzzCheck.checkFizzBuzz(5)).isEqualTo("Buzz");
-    }
-
-    @Test
-    public void check_number_test(){
-        assertThat(FizzBuzzCheck.checkFizzBuzz(1)).isEqualTo("1");
-    }
-
-    @Test
-    public void should_return_fizz_buzz_given_number_divisible_by_15(){
-        //given,测试数据,ctrl+n,refactor ,extract ,变量
-        int i = 15;
-        //when  alt+enter,ctrl+shift+enter(自动补全)
-        String result = FizzBuzzCheck.checkFizzBuzz(i);
-        //then  断言（assertThat）
-        assertThat(result).isEqualTo("FizzBuzz");
+    public void should_return_fizz_buzz_given_number_divisible_by_param() {
+        assertThat(FizzBuzzCheck.checkFizzBuzz(num)).isEqualTo(ans);
     }
 
 }
